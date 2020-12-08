@@ -1,0 +1,50 @@
+dependencies:
+  ws: 7.4.1_0200697df5ac38adb1cba3cf2367a68a
+lockfileVersion: 5.2
+optionalDependencies:
+  bufferutil: 4.0.2
+  utf-8-validate: 5.0.3
+packages:
+  /bufferutil/4.0.2:
+    dependencies:
+      node-gyp-build: 4.2.3
+    dev: false
+    optional: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-AtnG3W6M8B2n4xDQ5R+70EXvOpnXsFYg/AK2yTZd+HQ/oxAdz+GI+DvjmhBw3L0ole+LJ0ngqY4JMbDzkfNzhA==
+  /node-gyp-build/4.2.3:
+    dev: false
+    hasBin: true
+    optional: true
+    resolution:
+      integrity: sha512-MN6ZpzmfNCRM+3t57PTJHgHyw/h4OWnZ6mR8P5j/uZtqQr46RRuDE/P+g3n0YR/AiYXeWixZZzaip77gdICfRg==
+  /utf-8-validate/5.0.3:
+    dependencies:
+      node-gyp-build: 4.2.3
+    dev: false
+    optional: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-jtJM6fpGv8C1SoH4PtG22pGto6x+Y8uPprW0tw3//gGFhDDTiuksgradgFN6yRayDP4SyZZa6ZMGHLIa17+M8A==
+  /ws/7.4.1_0200697df5ac38adb1cba3cf2367a68a:
+    dependencies:
+      bufferutil: 4.0.2
+      utf-8-validate: 5.0.3
+    dev: false
+    engines:
+      node: '>=8.3.0'
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    resolution:
+      integrity: sha512-pTsP8UAfhy3sk1lSk/O/s4tjD0CRwvMnzvwr4OKGX7ZvqZtUyx4KIJB5JWbkykPoc55tixMGgTNoh3k4FkNGFQ==
+specifiers:
+  bufferutil: ^4.0.2
+  utf-8-validate: ^5.0.3
+  ws: ^7.4.1

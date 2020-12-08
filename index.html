@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" name="input" autocomplete="off" autofocus="1">
+      <input type="submit" value="send">
+    </form>
+    <div id="messages"></div>
+    <script>
+      const ws = new WebSocket('ws://localhost:8080')
+      let open = false
+
+      ws.onopen = (evt) => {
+        open = true
+        addLine({ line: 'connection established', from: 'system' })
+      }
+      ws.onmessage = (evt) => {
+        addLine({ line: evt.data, from: 'server' })
+      }
+      ws.onclose = (evt) => {
+        open = false
+        addLine({ line: 'connection closed', from: 'system' })
+      }
+      
+      document.getElementById('form').onsubmit = function submit (evt) {
+        evt.preventDefault()
+
+        const data = new FormData(evt.target)
+        const input = data.get('input')
+        if (!input) return
+
+        evt.target.reset()
+
+        if (!open) {
+          addLine({ line: 'connection is closed, refresh to try again', from: 'system' })
+          return
+        }
+
+        ws.send(input)
+        addLine({ line: input, from: 'me' })
+      }
+
+      const msgs = document.getElementById('messages')
+      function addLine ({ line, from }) {
+        const ts = new Intl.DateTimeFormat('default', {
+          month: 'numeric',
+          year: 'numeric',
+          day: 'numeric',
+          hour: 'numeric', 
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: false
+        }).format(new Date())
+        const p = document.createElement('p')
+        p.appendChild(document.createTextNode(`${ts} ${from}: ${line}`))
+        msgs.append(p)
+      }
+    </script>
+  </body>
+</html>
